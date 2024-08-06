@@ -1,14 +1,19 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { MainStackParamList } from '../types/navigation'
+import { DrawerStackList, MainStackParamList } from '../types/navigation'
+import { DrawerScreenProps } from '@react-navigation/drawer'
+import Header from '../components/Header'
 
-const Home = ({navigation}:NativeStackScreenProps<MainStackParamList>) => {
+
+
+type Props = NativeStackScreenProps<MainStackParamList, 'Home'> & DrawerScreenProps<DrawerStackList, 'Home'>;
+
+const Home = ({ navigation }: Props) => {
   return (
-    <View>
-      <Text>Home</Text>
-      <Button title='press' onPress={()=>navigation.navigate('Details',{id:1})}/>
-    </View>
+    <SafeAreaView>
+      <Header/>
+    </SafeAreaView>
   )
 }
 
